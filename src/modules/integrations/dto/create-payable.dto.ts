@@ -6,6 +6,7 @@ import {
   IsNotEmptyObject,
   IsNumber,
   IsObject,
+  IsOptional,
   IsPhoneNumber,
   IsString,
   IsUUID,
@@ -16,7 +17,8 @@ import {
 
 export abstract class Payable {
   @IsUUID()
-  id: string;
+  @IsOptional()
+  id?: string;
 
   @IsNumber({ maxDecimalPlaces: 2, allowNaN: false, allowInfinity: false })
   value: number;
@@ -25,11 +27,13 @@ export abstract class Payable {
   emissionDate: Date;
 
   @IsUUID()
-  assignor: string;
+  @IsOptional()
+  assignor?: string;
 }
 
 export abstract class Assignor {
   @IsUUID()
+  @IsOptional()
   id: string;
 
   @IsString()

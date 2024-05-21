@@ -16,7 +16,7 @@ datasource db {
 model Assignor {
   id        String    @id @default(uuid())
   name      String
-  document  String
+  document  String    @unique
   email     String
   phone     String
   createdAt DateTime  @default(now())
